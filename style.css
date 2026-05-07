@@ -1,0 +1,275 @@
+:root {
+  --bg: #F5F2EE;
+  --surface: #FFFFFF;
+  --primary: #5C7A5A;
+  --primary-light: #EBF0EB;
+  --primary-dark: #4a6348;
+  --text: #1C1713;
+  --text-muted: #7A6E66;
+  --border: #E4DDD6;
+  --col-bg: #F0ECE8;
+  --shadow: 0 1px 3px rgba(0,0,0,0.07);
+  --radius: 10px;
+  --sidebar-w: 220px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Inter, sans-serif; background: var(--bg); color: var(--text); font-size: 0.9rem; }
+button { cursor: pointer; font-family: inherit; }
+input, select { font-family: inherit; }
+
+/* ── Login ── */
+#login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+}
+.login-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem;
+  width: 340px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.login-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.06em;
+}
+.login-box h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.25rem; }
+.login-sub { color: var(--text-muted); margin-bottom: 2rem; font-size: 0.85rem; }
+.btn-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.65rem 1rem;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  transition: background 0.15s, border-color 0.15s;
+}
+.btn-google:hover { background: var(--bg); border-color: var(--primary); }
+.btn-google img { width: 18px; height: 18px; }
+
+/* ── Layout ── */
+.hidden { display: none !important; }
+#app { display: flex; min-height: 100vh; }
+
+/* ── Sidebar ── */
+.sidebar {
+  width: var(--sidebar-w);
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  padding: 1.5rem 0;
+}
+.sidebar-brand {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+  padding: 0 1.25rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.06em;
+}
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 0.75rem;
+}
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.75rem;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: left;
+  transition: background 0.15s, color 0.15s;
+  width: 100%;
+}
+.nav-btn:hover { background: var(--primary-light); color: var(--primary); }
+.nav-btn.active { background: var(--primary-light); color: var(--primary); font-weight: 600; }
+.nav-icon { font-size: 1rem; line-height: 1; }
+.sidebar-user {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+#user-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; background: var(--primary-light); }
+.user-details { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+#user-name { font-size: 0.8rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 130px; }
+#btn-logout { border: none; background: none; color: var(--text-muted); font-size: 0.75rem; padding: 0; text-align: left; }
+#btn-logout:hover { color: var(--primary); }
+
+/* ── Main ── */
+.main-content { margin-left: var(--sidebar-w); flex: 1; padding: 2rem 2.5rem; }
+.view-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.75rem; }
+.view-header h2 { font-size: 1.2rem; font-weight: 600; }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  border-radius: 7px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  transition: background 0.15s;
+}
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-ghost { background: transparent; border: 1.5px solid var(--border); color: var(--text-muted); }
+.btn-ghost:hover { border-color: var(--primary); color: var(--primary); }
+
+/* ── Stats ── */
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 560px; }
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.stat-value { font-size: 2.25rem; font-weight: 700; color: var(--text); line-height: 1; }
+
+/* ── Kanban ── */
+.kanban-board { display: flex; gap: 1rem; align-items: flex-start; overflow-x: auto; }
+.kanban-col {
+  background: var(--col-bg);
+  border-radius: var(--radius);
+  padding: 1rem;
+  width: 280px;
+  min-width: 280px;
+  transition: background 0.15s;
+}
+.kanban-col.drag-target { background: var(--primary-light); }
+.col-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+.col-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.dot-gray { background: #bbb; }
+.dot-green { background: var(--primary); }
+.dot-teal { background: #52a065; }
+.col-cards { display: flex; flex-direction: column; gap: 0.5rem; min-height: 40px; }
+.kanban-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem;
+  cursor: grab;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.15s, border-color 0.15s;
+}
+.kanban-card:hover { box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+.kanban-card:active { cursor: grabbing; }
+.card-title { font-weight: 500; font-size: 0.875rem; margin-bottom: 0.35rem; }
+.card-meta { font-size: 0.75rem; color: var(--text-muted); }
+
+/* ── Tasks ── */
+.task-list { display: flex; flex-direction: column; gap: 0.5rem; max-width: 720px; }
+.task-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.875rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: border-color 0.15s;
+}
+.task-item:hover { border-color: #ccc; }
+.task-check { width: 16px; height: 16px; accent-color: var(--primary); cursor: pointer; flex-shrink: 0; }
+.task-title { flex: 1; font-size: 0.875rem; font-weight: 500; }
+.task-title.done { text-decoration: line-through; color: var(--text-muted); }
+.task-assignee {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: var(--bg);
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+.task-due { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; }
+
+/* ── Modal ── */
+.modal {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.3);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 200;
+}
+.modal-box {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+.modal-box h3 { font-size: 1rem; font-weight: 600; }
+.modal-box label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.input {
+  padding: 0.5rem 0.7rem;
+  border: 1.5px solid var(--border);
+  border-radius: 7px;
+  font-size: 0.875rem;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.input:focus { border-color: var(--primary); background: #fff; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 0.25rem; }
+
+.error-msg { color: #b94040; font-size: 0.8rem; margin-top: 0.5rem; }
